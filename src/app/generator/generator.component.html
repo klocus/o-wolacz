@@ -49,7 +49,7 @@
     <br>
     {{ urls[0] }}
     <br><br>
-    {{ voters[0].join(', ') }}
+    ! {{ voters[0].join(', ') }}
   </article>
 
   <article contenteditable="true" disabled *ngIf="urls.length > 1">
@@ -57,10 +57,10 @@
     <br>
     {{ urls.join('\n') }}
     <br><br>
-    {{ voters[0].join(', ') }}
+    ! {{ voters[0].join(', ') }}
   </article>
 
   <article contenteditable="true" disabled *ngFor="let chunk of voters | slice:1">
-    {{ chunk.join(', ') }}
+    ! {{ chunk.join(', ') }}
   </article>
 </section>
