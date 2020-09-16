@@ -7,6 +7,6 @@ export const environment = {
   perChunk: {
     green: 20,
     orange: 50,
-    maroon: 100
+    maroon: 150
   }
 };
