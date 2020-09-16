@@ -1,0 +1,34 @@
+.button,
+button,
+input[type='button'],
+input[type='reset'],
+input[type='submit'] {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+
+  &[disabled] {
+    cursor: not-allowed;
+
+    &:hover,
+    &:focus {
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+  }
+  &.button-outline {
+    color: var(--color-primary);
+
+      &[disabled]:hover,
+      &[disabled]:focus {
+        background-color: transparent;
+        color: var(--color-primary);
+      }
+  }
+}
+
+.button-x {
+  background-image: url('../../img/cross.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+}

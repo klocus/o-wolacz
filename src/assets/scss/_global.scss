@@ -1,0 +1,36 @@
+body {
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+  background-color: var(--color-black);
+  color: var(--color-body);
+}
+
+a {
+  color: var(--color-primary);
+}
+
+a,
+button,
+.button,
+input,
+select {
+  transition: all .3s;
+}
+
+section {
+  margin: 30px 0;
+  padding: 30px;
+  border-radius: 5px;
+  background-color: var(--color-grey);
+
+  button[type='submit']:last-child,
+  [contenteditable]:last-child {
+    margin-bottom: 0;
+  }
+}
+
+footer {
+  text-align: center;
+  font-size: 1.4rem;
+  color: var(--color-muted);
+}

@@ -1,0 +1,66 @@
+<h1>O, Wołacz!</h1>
+<p>
+  Wklej do 5 adresów URL wpisów lub komentarzy z Mikrobloga, a narzędzie wygeneruje listę użytkowników, którzy je plusowali.
+</p>
+
+<section>
+  <form [formGroup]="formModel" (ngSubmit)="onSubmit()">
+    <fieldset>
+        <label>Rodzaj konta</label>
+        <select formControlName="accountType">
+          <option value="green">Zielonka</option>
+          <option value="orange">Pomarańczka</option>
+          <option value="maroon">Bordo</option>
+        </select>
+
+      <div formArrayName="urls">
+        <label>Lista adresów URL</label>
+        <div class="row" *ngFor="let url of formModel['controls']['urls']['controls']; let i = index">
+          <div class="column column-90">
+            <input type="url" placeholder="https://www.wykop.pl/wpis/123456/lorem-ipsum/" [formControlName]="i">
+          </div>
+          <div class="column column-10">
+            <button class="button-outline button-x w-full" [disabled]="!i" (click)="onRemoveUrl(i)"></button>
+          </div>
+        </div>
+        <button
+          class="button-outline"
+          (click)="onAddUrl()"
+          [disabled]="formModel['controls']['urls']['controls'].length >= env.maxFields"
+        >
+          Dodaj pole
+        </button>
+      </div>
+
+      <button
+        type="submit"
+        [ngClass]="{'w-full': true, 'loading': loading}"
+        [disabled]="formModel.invalid"
+      >
+        Generuj
+      </button>
+    </fieldset>
+  </form>
+</section>
+
+<section *ngIf="!loading && voters">
+  <article contenteditable="true" *ngIf="urls.length == 1">
+    Wołam użytkowników, którzy zaplusowali następujący wpis lub komentarz:
+    <br>
+    {{ urls[0] }}
+    <br><br>
+    {{ voters[0].join(', ') }}
+  </article>
+
+  <article contenteditable="true" disabled *ngIf="urls.length > 1">
+    Wołam użytkowników, którzy zaplusowali następujące wpisy lub komentarze:
+    <br>
+    {{ urls.join('\n') }}
+    <br><br>
+    {{ voters[0].join(', ') }}
+  </article>
+
+  <article contenteditable="true" disabled *ngFor="let chunk of voters | slice:1">
+    {{ chunk.join(', ') }}
+  </article>
+</section>
