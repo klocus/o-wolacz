@@ -1,20 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { GeneratorComponent } from './generator/generator.component';
+import { GeneratorModule } from './generator/generator.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    GeneratorComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    GeneratorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,11 @@ form {
   margin-bottom: 0;
 
   fieldset {
+    padding: 0;
+    margin: 0;
+  }
+  button[type='submit']:last-child {
+    margin-top: .5rem;
     margin-bottom: 0;
   }
 }
@@ -38,20 +43,6 @@ select {
   }
 }
 
-[contenteditable] {
-  -webkit-appearance: none;
-  margin-bottom: 1.5rem;
-  border: 0.1rem solid var(--color-muted);
-  border-radius: .4rem;
-  padding: .6rem 1.0rem .7rem;
-  width: 100%;
-  color: var(--color-body);
-  font-size: 13.3333px;
-  font-family: Arial;
-  white-space: pre-line;
-
-    &:focus {
-      outline: 0;
-      border-color: var(--color-primary);
-  }
+textarea {
+  resize: vertical;
 }

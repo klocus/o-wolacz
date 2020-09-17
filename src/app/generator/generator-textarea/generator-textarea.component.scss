@@ -1,0 +1,12 @@
+:host {
+  &:first-of-type {
+    textarea {
+      min-height: 10.1rem;
+    }
+  }
+  &:last-of-type {
+    textarea {
+      margin-bottom: 0;
+    }
+  }
+}

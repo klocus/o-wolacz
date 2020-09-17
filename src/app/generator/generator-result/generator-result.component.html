@@ -1,0 +1,22 @@
+<section *ngIf="voters">
+  <app-generator-textarea *ngIf="urls.length == 1" content="
+    Wołam użytkowników, którzy zaplusowali następujący wpis lub komentarz:
+    {{ urls[0] }}
+
+    {{ spoiler ? '! ' + voters[0].join(', ') : voters[0].join(', ') }}
+  ">
+  </app-generator-textarea>
+
+  <app-generator-textarea *ngIf="urls.length > 1" content="
+    Wołam użytkowników, którzy zaplusowali następujące wpisy lub komentarze:
+    {{ urls.join('\n') }}
+
+    {{ spoiler ? '! ' + voters[0].join(', ') : voters[0].join(', ') }}
+  ">
+  </app-generator-textarea>
+
+  <app-generator-textarea *ngFor="let chunk of voters | slice:1" content="
+    {{ spoiler ? '! ' + chunk.join(', ') : chunk.join(', ') }}
+  ">
+  </app-generator-textarea>
+</section>

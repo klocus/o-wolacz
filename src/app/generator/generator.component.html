@@ -1,17 +1,12 @@
-<h1>O, Wołacz!</h1>
-<p>
-  Wklej do 5 adresów URL wpisów lub komentarzy z Mikrobloga, a narzędzie wygeneruje listę użytkowników, którzy je plusowali.
-</p>
-
 <section>
   <form [formGroup]="formModel" (ngSubmit)="onSubmit()">
     <fieldset>
-        <label>Rodzaj konta</label>
-        <select formControlName="accountType">
-          <option value="green">Zielonka</option>
-          <option value="orange">Pomarańczka</option>
-          <option value="maroon">Bordo</option>
-        </select>
+      <label>Rodzaj konta</label>
+      <select formControlName="accountType">
+        <option value="green">Zielonka</option>
+        <option value="orange">Pomarańczka</option>
+        <option value="maroon">Bordo</option>
+      </select>
 
       <div formArrayName="urls">
         <label>Lista adresów URL</label>
@@ -28,14 +23,18 @@
           (click)="onAddUrl()"
           [disabled]="formModel['controls']['urls']['controls'].length >= env.maxFields"
         >
-          Dodaj pole
+          Dodaj adres
         </button>
       </div>
 
+      <label>Spoiler</label>
+      <input type="checkbox" id="spoiler" formControlName="spoiler">
+      <label class="label-inline" for="spoiler">Dodaj spoiler do wołanych użytkowników</label>
+
       <button
         type="submit"
-        [ngClass]="{'w-full': true, 'loading': loading}"
-        [disabled]="formModel.invalid"
+        [ngClass]="{ 'w-full': true, 'button-loading': loading }"
+        [disabled]="formModel.invalid || loading"
       >
         Generuj
       </button>
@@ -43,24 +42,9 @@
   </form>
 </section>
 
-<section *ngIf="!loading && voters">
-  <article contenteditable="true" *ngIf="urls.length == 1">
-    Wołam użytkowników, którzy zaplusowali następujący wpis lub komentarz:
-    <br>
-    {{ urls[0] }}
-    <br><br>
-    ! {{ voters[0].join(', ') }}
-  </article>
-
-  <article contenteditable="true" disabled *ngIf="urls.length > 1">
-    Wołam użytkowników, którzy zaplusowali następujące wpisy lub komentarze:
-    <br>
-    {{ urls.join('\n') }}
-    <br><br>
-    ! {{ voters[0].join(', ') }}
-  </article>
-
-  <article contenteditable="true" disabled *ngFor="let chunk of voters | slice:1">
-    ! {{ chunk.join(', ') }}
-  </article>
-</section>
+<app-generator-result
+  [voters]="voters"
+  [urls]="urls"
+  [spoiler]="formModel.value.spoiler"
+  *ngIf="!loading">
+</app-generator-result>

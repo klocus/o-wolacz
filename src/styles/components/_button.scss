@@ -3,6 +3,7 @@ button,
 input[type='button'],
 input[type='reset'],
 input[type='submit'] {
+  margin-bottom: 1.5rem;
   color: var(--color-white);
   background-color: var(--color-primary);
   border-color: var(--color-primary);
@@ -31,4 +32,13 @@ input[type='submit'] {
   background-image: url('../../assets/img/cross.svg');
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+.button-loading {
+  font-size: 0;
+
+  &:before {
+    content: 'Ładuję dane...';
+    font-size: 1.1rem;
+  }
 }

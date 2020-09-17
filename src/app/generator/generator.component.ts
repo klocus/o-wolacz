@@ -13,7 +13,7 @@ export interface Post {
 @Component({
   selector: 'app-generator',
   templateUrl: './generator.component.html',
-  styleUrls: ['./generator.component.scss']
+  styles: []
 })
 export class GeneratorComponent implements OnInit {
   env = environment;
@@ -30,6 +30,7 @@ export class GeneratorComponent implements OnInit {
   ngOnInit(): void {
     this.formModel = new FormGroup({
       accountType: new FormControl('orange', [Validators.required]),
+      spoiler: new FormControl(false),
       urls: new FormArray([
         new FormControl('', [Validators.required, Validators.pattern(this.env.postRegex)])
       ])

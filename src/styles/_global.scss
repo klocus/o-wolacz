@@ -14,7 +14,7 @@ button,
 .button,
 input,
 select {
-  transition: all .3s;
+  transition: color .3s, border .3s, background .3s;
 }
 
 section {
@@ -22,11 +22,6 @@ section {
   padding: 30px;
   border-radius: 5px;
   background-color: var(--color-grey);
-
-  button[type='submit']:last-child,
-  [contenteditable]:last-child {
-    margin-bottom: 0;
-  }
 }
 
 footer {
