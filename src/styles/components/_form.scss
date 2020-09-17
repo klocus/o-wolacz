@@ -1,3 +1,6 @@
+/**
+* Form
+**/
 form {
   margin-bottom: 0;
 
@@ -11,6 +14,9 @@ form {
   }
 }
 
+/**
+* Inputs
+**/
 input[type='color'],
 input[type='date'],
 input[type='datetime'],
@@ -24,17 +30,25 @@ input[type='tel'],
 input[type='text'],
 input[type='url'],
 input[type='week'],
+input[type='checkbox'],
+input[type='radio'],
 input:not([type]),
 textarea,
 select {
+  appearance: none;
   color: var(--color-body);
-  border-color: var(--color-muted);
+  border: 1px solid var(--color-muted);
+  border-radius: .4rem;
 
   &:focus {
     border-color: var(--color-primary);
+    outline: 0;
   }
 }
 
+/**
+* Select
+**/
 select {
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 8" width="30"><path fill="%23444444" d="M0,0l6,8l6-8"/></svg>') center right no-repeat;
 
@@ -43,6 +57,43 @@ select {
   }
 }
 
+/**
+* Textarea
+**/
 textarea {
   resize: vertical;
+}
+
+/**
+* Checkbox & Radio
+**/
+input[type='checkbox'],
+input[type='radio'] {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin: -0.4rem 0.5rem 0 0;
+
+  &:checked {
+    color: var(--color-primary);
+
+    &:before {
+      content: '•';
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+}
+
+input[type='radio'] {
+  border-radius: 50%;
+}
+input[type='checkbox']:checked::before {
+  content: '✔';
+  transform: translateY(-50%) translateY(0.5px) translateX(-6px);
 }

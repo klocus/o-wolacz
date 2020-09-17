@@ -1,11 +1,11 @@
 <section>
   <form [formGroup]="formModel" (ngSubmit)="onSubmit()">
     <fieldset>
-      <label>Rodzaj konta</label>
+      <label>Rodzaj Twojego konta</label>
       <select formControlName="accountType">
-        <option value="green">Zielonka</option>
-        <option value="orange">Pomarańczka</option>
-        <option value="maroon">Bordo</option>
+        <option value="green">Zielonka ({{ env.perChunk.green }} przywołań)</option>
+        <option value="orange">Pomarańczka ({{ env.perChunk.orange }} przywołań)</option>
+        <option value="maroon">Bordo ({{ env.perChunk.maroon }} przywołań)</option>
       </select>
 
       <div formArrayName="urls">
