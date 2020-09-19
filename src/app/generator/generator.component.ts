@@ -13,7 +13,7 @@ export interface Post {
 @Component({
   selector: 'app-generator',
   templateUrl: './generator.component.html',
-  styles: []
+  styleUrls: ['./generator.component.scss']
 })
 export class GeneratorComponent implements OnInit {
   env = environment;

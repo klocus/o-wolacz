@@ -11,11 +11,11 @@
       <div formArrayName="urls">
         <label>Lista adresów URL</label>
         <div class="row" *ngFor="let url of formModel['controls']['urls']['controls']; let i = index">
-          <div class="column column-90">
+          <div class="column">
             <input type="url" placeholder="https://www.wykop.pl/wpis/123456/lorem-ipsum/" [formControlName]="i">
           </div>
-          <div class="column column-10">
-            <button class="button-outline button-x w-full" [disabled]="!i" (click)="onRemoveUrl(i)"></button>
+          <div class="column">
+            <button class="button-outline button-x" [disabled]="!i" (click)="onRemoveUrl(i)"></button>
           </div>
         </div>
         <button

@@ -1,0 +1,23 @@
+[formArrayName='urls'] {
+  button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  [formArrayName='urls'] {
+    .row {
+      .column:first-child {
+        flex: 0 0 90%;
+        max-width: 90%;
+      }
+      .column:last-child {
+        flex: 0 0 10%;
+        max-width: 10%;
+      }
+    }
+    & > button {
+      width: auto;
+    }
+  }
+}
