@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class GeneratorTextareaComponent implements OnInit {
   @Input() content: string;
+  isCopied: boolean = false;
 
   constructor() { }
 
@@ -31,6 +32,8 @@ export class GeneratorTextareaComponent implements OnInit {
   onClick(textarea: HTMLTextAreaElement): void {
     textarea.focus();
     textarea.select();
+    document.execCommand('copy');
+    this.isCopied = true;
   }
 
 }

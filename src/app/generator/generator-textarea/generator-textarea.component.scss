@@ -1,4 +1,7 @@
 :host {
+  position: relative;
+  display: block;
+
   &:first-of-type {
     textarea {
       min-height: 10.1rem;
@@ -8,5 +11,20 @@
     textarea {
       margin-bottom: 0;
     }
+  }
+
+  textarea + span {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    display: inline-block;
+    padding: 0 5px;
+    border-top-right-radius: .3rem;
+    border-bottom-left-radius: .3rem;
+    background-color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
   }
 }
