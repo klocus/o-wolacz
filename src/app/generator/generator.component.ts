@@ -104,14 +104,17 @@ export class GeneratorComponent implements OnInit {
   private getPostsData(): Post[] {
     let result: Array<Post> = [];
     let found: Array<any>;
+    let regex: Array<any> =
+      [
+        { type: 'commentUpvoters', regex: this.env.commentRegex },
+        { type: 'upvoters', regex: this.env.postRegex },
+      ];
 
     for (let url of this.getFormUrls()) {
-      found = url.match(RegExp(this.env.postRegex));
-      if (found) {
-        if (found[2] !== undefined) {
-          result.push({ id: found[2], type: 'commentUpvoters' });
-        } else {
-          result.push({ id: found[1], type: 'upvoters' });
+      for (let row of regex) {
+        if (found = url.match(RegExp(row.regex))) {
+          result.push({ id: found[1], type: row.type });
+          break;
         }
       }
     }

@@ -1,4 +1,4 @@
-<section *ngIf="voters">
+<section *ngIf="voters && voters.length">
   <app-generator-textarea *ngIf="urls.length == 1" content="
     Wołam użytkowników, którzy zaplusowali następujący wpis lub komentarz:
     {{ urls[0] }}
